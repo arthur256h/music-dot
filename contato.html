@@ -87,5 +87,45 @@ button {
 
     <button type="submit">Enviar</button>
 </form>
+    <Script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            const nome = document.getElementById("nome").value.trim();
+            const telefone = document.getElementById("fone").value.trim();
+            const email = document.getElementById("email").value.trim();
+        const mensagem = document.getElementById("mensagem").value.trim();
+        if (nome === "") {
+            alert("O nome não pode estar vazio")
+            return;
+            
+        }if (nome.length < 10) {
+            alert("O nome deve ter no mínimo 10 caracteres.")
+            return;
+            
+        }if (telefone === "") {
+            alert("O telefone não pode estar vazio")
+            return;
+        }if (telefone.length !== 10) {
+            alert("O telefone deve ter exatamente 10 caracteres")
+            return;
+        }if (email === "") {
+        alert("O e-mail não pode estar vazio.");
+        return;
+        }
+        const emailValido = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailValido.test(email)) {
+        alert("Digite um e-mail válido.");
+        return;
+        }if (mensagem === "") {
+        alert("A opinião não pode estar vazia.");
+        return;
+        }if (mensagem.length < 10 || mensagem.length > 50) {
+        alert("A opinião deve ter entre 10 e 50 caracteres.");
+        return;
+        }
+        alert("Formulário enviado com sucesso")
+        event.target.submit();
+        })
+    </Script>
 </body>
 </html>
